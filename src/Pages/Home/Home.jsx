@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import Login from '../LoginsAndRegisters/Login/Login';
+import React from 'react';
 
 const Home = () => {
+
   return (
     <div>
-
+      <h2>This is home Page</h2>
     </div>
   );
 };
