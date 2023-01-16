@@ -31,13 +31,7 @@ const NavBar = () => {
         </Link>
       </li>
       <li className="lg:mr-1 mb-1">
-        <Link to={`/media`}>Media</Link>
-      </li>
-      <li className="lg:mr-1 mb-1">
-        <Link to={`/message`}>Message</Link>
-      </li>
-      <li className="lg:mr-1 mb-1">
-        <Link to={`/about`}>About</Link>
+        <Link to={`/about`}>About Us</Link>
       </li>
       <li className="lg-mr-1 mb-1" title={`${darkTheme ? "Turn on light theme" : "Turn on dark theme"}`}>
         <label className="swap swap-rotate">
@@ -99,7 +93,7 @@ const NavBar = () => {
                       Logout
                     </button>
                   </li>
-                  <li><a href="/">Settings</a></li>
+                  <li><Link to={`dashboard`}>Dashboard</Link></li>
                 </ul>
               </div>
               :
