@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-
-
 
 const Login = () => {
   const { googleLogin } = useContext(AuthContext);
 
   const [isDataLoading, setIsDataLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleGoogleLogin = () => {
     setIsDataLoading(true);
@@ -16,6 +16,7 @@ const Login = () => {
         const user = result.user;
         toast.success(`Welcome! ${user.displayName || user.email}`);
         setIsDataLoading(false);
+        navigate("/dashboard");
       })
       .catch(error => {
         console.log("google login error: ", error);
