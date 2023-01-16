@@ -3,7 +3,6 @@ import DashboardLayouts from "../../Layouts/DashboardLayouts";
 import Parent from "../../Layouts/Parent";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import Data from "../../Pages/Dashboard/Data/Data";
-import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/LoginsAndRegisters/Login/Login";
 import About from "../../Pages/Other/About/About";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
@@ -18,11 +17,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <PrivateRoute><DashboardLayouts></DashboardLayouts></PrivateRoute>
       },
       {
         path: "/home",
-        element: <Home></Home>
+        element: <PrivateRoute><DashboardLayouts></DashboardLayouts></PrivateRoute>
       },
       {
         path: "/login",

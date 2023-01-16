@@ -1,11 +1,11 @@
-import React from 'react';
-import Dashboard from '../Dashboard/Dashboard/Dashboard';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import Login from '../LoginsAndRegisters/Login/Login';
 
 const Home = () => {
   return (
     <div>
-      <Login></Login>
+
     </div>
   );
 };
