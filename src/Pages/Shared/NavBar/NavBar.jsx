@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaUser } from 'react-icons/fa';
-import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { ThemeContext } from "../../../contexts/ThemeProvider/ThemeProvider";
 
 const NavBar = () => {
@@ -78,7 +78,7 @@ const NavBar = () => {
             </ul>
           </div>
           <Link to={`/`} className="btn btn-ghost normal-case text-xl">
-            Blaze Media
+            WebUpLab
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
