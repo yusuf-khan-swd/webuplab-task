@@ -4,6 +4,7 @@ import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/LoginsAndRegisters/Login/Login";
 import About from "../../Pages/Other/About/About";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
+import PrivateRoute from "../../PrivateRoute/PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About></About>
+        element: <PrivateRoute><About></About></PrivateRoute>
       }
     ]
   }
