@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaHome, FaUser } from 'react-icons/fa';
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { ThemeContext } from "../../../contexts/ThemeProvider/ThemeProvider";
 
-const NavBar = () => {
+const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
+  const currentLocation = useLocation().pathname;
 
   const handleLogOut = () => {
     logOut()
@@ -25,12 +26,12 @@ const NavBar = () => {
 
   const menuItems = (
     <>
-      <li className="lg:mr-1 mb-1">
+      <li className="mb-1 lg:m-0 lg:mr-1">
         <Link to={`/home`}>
           <FaHome></FaHome>
         </Link>
       </li>
-      <li className="lg:mr-1 mb-1">
+      <li className="mb-1 lg:m-0 lg:mr-1">
         <Link to={`/about`}>About Us</Link>
       </li>
       <li className="lg-mr-1 mb-1" title={`${darkTheme ? "Turn on light theme" : "Turn on dark theme"}`}>
@@ -84,25 +85,54 @@ const NavBar = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar" title={` ${user.email}`}>
                   <div className="w-9 rounded-full p-1">
-                    <FaUser className="h-full w-full"></FaUser>
+                    {
+                      user?.photoURL ?
+                        <img src={user?.photoURL} alt="" />
+                        :
+                        <FaUser className="h-full w-full"></FaUser>
+                    }
                   </div>
                 </label>
                 <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                  <li><NavLink to={`/dashboard`}>Dashboard</NavLink></li>
                   <li>
                     <button onClick={handleLogOut}>
                       Logout
                     </button>
                   </li>
-                  <li><Link to={`dashboard`}>Dashboard</Link></li>
                 </ul>
               </div>
               :
               <Link to={`/login`} className="btn">Login</Link>
           }
+          {user && currentLocation.includes("/dashboard") && (
+            <div>
+              <label
+                htmlFor="dashboard-drawer"
+                tabIndex={0}
+                className="btn btn-ghost lg:hidden"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </label>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default NavBar;
+export default Navbar;
